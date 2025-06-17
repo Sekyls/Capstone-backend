@@ -33,6 +33,12 @@ app.use("/api/v1/restaurants", restaurantRoutes);
 app.use("/api/v1/meals", mealRoutes);
 app.use("/api/v1/orders", orderRoutes);
 
+// HEALTH CHECK ROUTE
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
+
+
 //GLOBAL ERROR HANDLING
 process.on("unhandledRejection", (reason, promise) => {
   console.error("Unhandled Rejection at:", promise, "reason:", reason);
