@@ -8,8 +8,16 @@ const orderRoutes = require("./routes/orderRoutes");
 const rateLimiter = require("./middlewares/rateLimiter");
 const helmet = require("helmet");
 
+const allowedOrigins = [
+  "http://localhost:5173", 
+  "https://capstone-frontend-khaki-seven.vercel.app"
+];
+
 //MIDDLEWARES
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 app.use(express.json());
 app.use(
   helmet({
